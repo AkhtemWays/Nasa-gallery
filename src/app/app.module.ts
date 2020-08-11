@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ImagesModule } from './images/images.module';
-import { HttpServiceService } from './http-service.service';
+import { HttpServiceService } from './images/http-service.service';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({

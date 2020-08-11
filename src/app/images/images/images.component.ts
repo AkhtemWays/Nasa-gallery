@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpServiceService } from '../../http-service.service';
+import { HttpServiceService } from '../http-service.service';
 
 @Component({
   selector: 'app-images',
