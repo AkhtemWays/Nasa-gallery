@@ -9,6 +9,5 @@ import { routeComponents } from './images-routing.module';
   declarations: [routeComponents],
   imports: [CommonModule, ImagesRoutingModule],
   providers: [{ provide: HttpServiceService, useClass: HttpServiceService }],
-  exports: [ImagesComponent],
 })
 export class ImagesModule {}

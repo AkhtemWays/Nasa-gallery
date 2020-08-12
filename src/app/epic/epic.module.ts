@@ -9,6 +9,5 @@ import { EpicComponent } from './epic.component';
   declarations: [EpicComponent],
   imports: [CommonModule, EPICRoutingModule],
   providers: [EpicService],
-  exports: [EpicComponent],
 })
 export class EPICModule {}

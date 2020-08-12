@@ -11,6 +11,5 @@ import { ImageOfDayComponent } from './image-of-day/image-of-day.component';
   providers: [
     { provide: ImageOfDayHttpService, useClass: ImageOfDayHttpService },
   ],
-  exports: [ImageOfDayComponent],
 })
 export class ImageOfDayModule {}
