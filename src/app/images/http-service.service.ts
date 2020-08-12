@@ -13,7 +13,6 @@ export class HttpServiceService {
     // после гет реквеста получим обсервабл
     return this.http.get<any[]>(this._url).pipe(
       map((data) => {
-        console.log(data);
         return data;
       }),
       catchError((error) => this.errorHandler(error))
