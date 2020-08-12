@@ -1,9 +1,16 @@
 <div
   align="center"
-  [ngStyle]="{ 'background-color': 'black', 'margin-top': '1em' }"
+  [ngStyle]="{
+    'background-color': 'black',
+    'margin-top': '1em'
+  }"
 >
-  <div *ngFor="let item of cleanedData" class="m-4">
-    <img src="{{ item.url }}" alt="Something went wrong" />
+  <div
+    *ngFor="let item of cleanedData"
+    class="m-4"
+    [ngStyle]="{ border: '1px solid red' }"
+  >
+    <img src="{{ item.url }}" alt="Something went wrong" class="mt-5" />
     <h5
       class="m-5"
       [ngStyle]="{
