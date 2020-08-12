@@ -1,4 +1,4 @@
-import { IData } from './../data.interface';
+import { IIMagesData } from './../data.interface';
 import { Component, OnInit } from '@angular/core';
 import { HttpServiceService } from '../http-service.service';
 
@@ -9,8 +9,8 @@ import { HttpServiceService } from '../http-service.service';
 })
 export class ImagesComponent implements OnInit {
   data: any;
-  cleanedData: IData[] = [];
-  links: string[] = [];
+  cleanedData: IIMagesData[] = [];
+
   constructor(private http: HttpServiceService) {}
 
   ngOnInit(): void {

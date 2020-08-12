@@ -1,4 +1,4 @@
-export interface IData {
+export interface IIMagesData {
   readonly link: string; // readonly для неизменности
   location: string;
   description: string;

@@ -1,17 +1,40 @@
 <h1>Gallery</h1>
-<div *ngFor="let item of cleanedData.slice(0, 35); let idx = index" class="box" align="center">
+<div
+  *ngFor="let item of cleanedData.slice(0, 35); let idx = index"
+  class="box"
+  align="center"
+>
   <div>
-    <div [ngStyle]="{'background-image': 'url(' + item.link + ')', 'text-align': 'right', 'display': 'block'}" class="image-field">
-      <p id="photographer">Photo credit: {{item.photographer.slice(5)}}</p>
+    <div
+      [ngStyle]="{
+        'background-image': 'url(' + item.link + ')',
+        'text-align': 'right',
+        display: 'block'
+      }"
+      class="image-field"
+    >
+      <p id="photographer">
+        Photo credit: {{ item.photographer ? item.photographer.slice(5) : "" }}
+      </p>
       <div class="both">
-        <p id="location">Made in {{item.location}}</p>
-        <p id="date-created">Posted at {{item.date_created | date:'MMM d, y, h:mm a'}}</p>
+        <p id="location">Made in {{ item.location }}</p>
+        <p id="date-created">
+          Posted at {{ item.date_created | date: "MMM d, y, h:mm a" }}
+        </p>
       </div>
     </div>
     <div class="body">
-      <h3>{{item.title}}</h3>
-      <h6>{{item.description.slice(0, item.description.length - 17 - item.photographer.length)}}</h6>
+      <h3>{{ item.title }}</h3>
+      <h6>
+        {{
+          item.description.slice(
+            0,
+            item.description.length -
+              17 -
+              (item.photographer ? item.photographer.length : 0)
+          )
+        }}
+      </h6>
     </div>
   </div>
 </div>
-

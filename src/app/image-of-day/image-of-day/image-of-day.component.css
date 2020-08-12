@@ -1,0 +1,30 @@
+.box {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100em 50em;
+  background-color: black;
+}
+
+.box img {
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 1000px;
+}
+
+h1 {
+  color: chocolate;
+  text-align: center;
+  padding: 2em;
+  font-family: cursive;
+  font-style: oblique;
+}
+
+h3 {
+  color: aqua;
+  padding: 1em;
+  text-align: center;
+  font-style: oblique;
+  font-family: cursive;
+  font-weight: bold;
+}
