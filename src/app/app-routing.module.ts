@@ -22,6 +22,17 @@ const routes: Routes = [
     loadChildren: () => import('./epic/epic.module').then((m) => m.EPICModule),
     pathMatch: 'full',
   },
+  {
+    path: 'mars',
+    loadChildren: () => import('./mars/mars.module').then((m) => m.MarsModule),
+    pathMatch: 'full',
+  },
+  {
+    path: 'technology',
+    loadChildren: () =>
+      import('./technology/technology.module').then((m) => m.TechnologyModule),
+    pathMatch: 'full',
+  },
 ];
 
 @NgModule({

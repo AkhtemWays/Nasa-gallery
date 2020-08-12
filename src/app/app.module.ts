@@ -1,3 +1,6 @@
+import { TechnologyModule } from './technology/technology.module';
+import { MarsModule } from './mars/mars.module';
+import { EPICModule } from './epic/epic.module';
 import { ImageOfDayModule } from './image-of-day/image-of-day.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -14,6 +17,9 @@ import { HttpClientModule } from '@angular/common/http';
     ImagesModule,
     HttpClientModule,
     ImageOfDayModule,
+    EPICModule,
+    MarsModule,
+    TechnologyModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

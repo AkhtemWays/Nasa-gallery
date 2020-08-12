@@ -1,5 +1,7 @@
 .box {
   background-color: black;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-style: unset;
 }
 
 h5 {
