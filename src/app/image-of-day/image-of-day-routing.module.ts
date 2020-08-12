@@ -1,15 +1,17 @@
-import { ImagesComponent } from './images/images.component';
+import { ImageOfDayComponent } from './image-of-day/image-of-day.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', component: ImagesComponent, pathMatch: 'full' },
+  {
+    path: '',
+    component: ImageOfDayComponent,
+    pathMatch: 'full',
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class ImagesRoutingModule {}
-
-export const routeComponents = [ImagesComponent];
+export class ImageOfDayRoutingModule {}

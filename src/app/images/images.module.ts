@@ -4,10 +4,9 @@ import { HttpServiceService } from './http-service.service';
 import { ImagesRoutingModule } from './images-routing.module';
 import { ImagesComponent } from './images/images.component';
 import { routeComponents } from './images-routing.module';
-import { BoxComponent } from './box/box.component';
 
 @NgModule({
-  declarations: [routeComponents, BoxComponent],
+  declarations: [routeComponents],
   imports: [CommonModule, ImagesRoutingModule],
   providers: [{ provide: HttpServiceService, useClass: HttpServiceService }],
   exports: [ImagesComponent],

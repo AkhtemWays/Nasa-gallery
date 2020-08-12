@@ -1,7 +1,6 @@
 import { IData } from './../data.interface';
 import { Component, OnInit } from '@angular/core';
 import { HttpServiceService } from '../http-service.service';
-import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-images',
