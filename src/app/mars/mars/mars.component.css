@@ -1,5 +1,10 @@
 img {
-  width: 1850px;
-  height: 950px;
+  width: 1650px;
+  height: 850px;
   object-fit: cover;
+  padding: 1em;
+}
+
+div {
+  background-color: black;
 }

@@ -1,1 +1,18 @@
-<p>technology works!</p>
+<div
+  align="center"
+  [ngStyle]="{ 'background-color': 'black', 'margin-top': '1em' }"
+>
+  <div *ngFor="let item of cleanedData" class="m-4">
+    <img src="{{ item.url }}" alt="Something went wrong" />
+    <h5
+      class="m-5"
+      [ngStyle]="{
+        color: 'white',
+        'font-family': 'cursive',
+        'font-style': 'italic'
+      }"
+    >
+      {{ item.description }}
+    </h5>
+  </div>
+</div>
