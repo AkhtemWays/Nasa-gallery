@@ -1,3 +1,4 @@
+import { SharedModule } from './shared/shared.module';
 import { TechnologyModule } from './technology/technology.module';
 import { MarsModule } from './mars/mars.module';
 import { EPICModule } from './epic/epic.module';
@@ -20,6 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
     EPICModule,
     MarsModule,
     TechnologyModule,
+    SharedModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
