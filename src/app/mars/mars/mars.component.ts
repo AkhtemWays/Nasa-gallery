@@ -12,6 +12,7 @@ export class MarsComponent implements OnInit {
   data;
   images: string[] = [];
   pagination: number = 4;
+  loading: boolean = false;
   full: boolean = false;
   constructor(
     private service: MarsService,
@@ -19,7 +20,9 @@ export class MarsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.loading = true;
     this.makeCall();
+    this.loading = false;
   }
   makeCall() {
     this.service.getData(this.pagination).subscribe((data) => {

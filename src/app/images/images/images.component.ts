@@ -13,6 +13,7 @@ export class ImagesComponent implements OnInit {
   cleanedData: IIMagesData[] = [];
   pagination: number = 4;
   full: boolean = false;
+  loading: boolean = false;
   constructor(
     private http: HttpServiceService,
     private spinner: NgxSpinnerService
@@ -22,6 +23,7 @@ export class ImagesComponent implements OnInit {
     this.makeCall();
   }
   makeCall() {
+    this.loading = true;
     this.http.getData(this.pagination).subscribe((data) => {
       this.http.full ? (this.full = true) : null;
       this.data = data;
@@ -43,6 +45,7 @@ export class ImagesComponent implements OnInit {
       }
     });
     this.pagination += 4;
+    this.loading = false;
   }
   onScroll() {
     this.spinner.show();

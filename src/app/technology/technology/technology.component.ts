@@ -13,13 +13,16 @@ export class TechnologyComponent implements OnInit {
   cleanedData: ITechnology[] = [];
   pagination: number = 3;
   full: boolean = false;
+  loading: boolean = false;
   constructor(
     private service: TechnologyService,
     private spinner: NgxSpinnerService
   ) {}
 
   ngOnInit(): void {
+    this.loading = true;
     this.makeCall();
+    this.loading = false;
   }
   onScroll() {
     this.spinner.show();

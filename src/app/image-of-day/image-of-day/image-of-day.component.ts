@@ -25,7 +25,6 @@ export class ImageOfDayComponent implements OnInit {
       };
 
       this.cleanedImageObject = cleanedImage;
-      console.log(this.cleanedImageObject.url);
     });
   }
 }

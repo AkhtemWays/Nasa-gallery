@@ -13,6 +13,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 export class EpicComponent implements OnInit {
   data: IEarthData[] = [];
   full: boolean = false;
+  loading: boolean = false;
   constructor(
     private epicImagesService: EpicImagesService,
     private spinner: NgxSpinnerService,
@@ -33,8 +34,10 @@ export class EpicComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.loading = true;
     this.epicImagesService.getImageData();
     this.data = this.epicImagesService.cleanedData;
+    this.loading = false;
   }
   onScroll() {
     this.spinner.show();
