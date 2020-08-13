@@ -1,6 +1,7 @@
 import { IIMagesData } from './../data.interface';
 import { Component, OnInit } from '@angular/core';
 import { HttpServiceService } from '../http-service.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-images',
@@ -10,13 +11,24 @@ import { HttpServiceService } from '../http-service.service';
 export class ImagesComponent implements OnInit {
   data: any;
   cleanedData: IIMagesData[] = [];
-
-  constructor(private http: HttpServiceService) {}
+  pagination: number = 4;
+  full: boolean = false;
+  constructor(
+    private http: HttpServiceService,
+    private spinner: NgxSpinnerService
+  ) {}
 
   ngOnInit(): void {
-    this.http.getData().subscribe((data) => {
+    this.spinner.show();
+    this.makeCall();
+    this.spinner.hide();
+  }
+  makeCall() {
+    this.http.getData(this.pagination).subscribe((data) => {
+      this.http.full ? (this.full = true) : null;
       this.data = data;
-      for (let item of this.data.collection.items) {
+      console.log(this.data);
+      for (let item of this.data) {
         const link = item.links[0].href;
         const description = item.data[0].description;
         const photographer = item.data[0].photographer;
@@ -33,5 +45,15 @@ export class ImagesComponent implements OnInit {
         });
       }
     });
+    this.pagination += 4;
+  }
+  onScroll() {
+    if (!this.full) {
+      this.spinner.show();
+      this.makeCall();
+      this.spinner.hide();
+    } else {
+      console.log('no request');
+    }
   }
 }

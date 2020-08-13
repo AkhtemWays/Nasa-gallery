@@ -1,39 +1,77 @@
-<div
-  *ngFor="let item of cleanedData.slice(0, 35); let idx = index"
-  class="box"
-  align="center"
->
-  <div>
+<div>
+  <div
+    infiniteScroll
+    [infiniteScrollDistance]="2"
+    [infiniteScrollThrottle]="50"
+    (scrolled)="onScroll()"
+  >
+    <!-- 35 -->
     <div
-      [ngStyle]="{
-        'background-image': 'url(' + item.link + ')',
-        'text-align': 'right',
-        display: 'block'
-      }"
-      class="image-field"
+      *ngFor="let item of cleanedData; let idx = index"
+      class="box"
+      align="center"
     >
-      <p id="photographer">
-        Photo credit: {{ item.photographer ? item.photographer.slice(5) : "" }}
-      </p>
-      <div class="both">
-        <p id="location">Made in {{ item.location }}</p>
-        <p id="date-created">
-          Posted at {{ item.date_created | date: "MMM d, y, h:mm a" }}
-        </p>
+      <div>
+        <div
+          [ngStyle]="{
+            'background-image': 'url(' + item.link + ')',
+            'text-align': 'right',
+            display: 'block'
+          }"
+          class="image-field"
+        >
+          <p id="photographer">
+            Photo credit:
+            {{ item.photographer ? item.photographer.slice(5) : "" }}
+          </p>
+          <div class="both">
+            <p id="location">Made in {{ item.location }}</p>
+            <p id="date-created">
+              Posted at {{ item.date_created | date: "MMM d, y, h:mm a" }}
+            </p>
+          </div>
+        </div>
+        <div class="body">
+          <h3>{{ item.title }}</h3>
+          <h6>
+            {{
+              item.description.slice(
+                0,
+                item.description.length -
+                  17 -
+                  (item.photographer ? item.photographer.length : 0)
+              )
+            }}
+          </h6>
+        </div>
       </div>
     </div>
-    <div class="body">
-      <h3>{{ item.title }}</h3>
-      <h6>
-        {{
-          item.description.slice(
-            0,
-            item.description.length -
-              17 -
-              (item.photographer ? item.photographer.length : 0)
-          )
-        }}
-      </h6>
+  </div>
+  <div class="row pb-5" *ngIf="!full; else noPostsLeft">
+    <div class="col-md-12 p-5">
+      <ngx-spinner
+        bdOpacity="0.9"
+        bdColor=""
+        size="default"
+        color="#581f87"
+        type="ball-pulse-sync"
+        [fullScreen]="false"
+      >
+      </ngx-spinner>
     </div>
   </div>
+  <ng-template #noPostsLeft>
+    <div class="row pb-5" align="center">
+      <div
+        class="col-md-12 p-5 h3"
+        [ngStyle]="{
+          'background-color': 'black',
+          color: 'white',
+          'font-style': 'oblique'
+        }"
+      >
+        No posts left
+      </div>
+    </div>
+  </ng-template>
 </div>

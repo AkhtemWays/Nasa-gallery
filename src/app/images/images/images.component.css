@@ -44,15 +44,16 @@
 
 .body {
   margin-top: 2em;
-  margin-left: 1em
+  margin-left: 1em;
 }
 
-h3, h6 {
+h3,
+h6 {
   text-align: left;
 }
 
 h3 {
-  font-family: Georgia, Times, 'Times New Roman', serif;
+  font-family: Georgia, Times, "Times New Roman", serif;
 }
 
 h6 {
