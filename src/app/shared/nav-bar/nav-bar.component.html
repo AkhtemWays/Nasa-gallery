@@ -1,6 +1,12 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-  <a class="navbar-brand m-4" routerLink="/images">Gallery</a>
+<nav
+  class="navbar navbar-expand-lg navbar-light bg-light fixed-top"
+  fade
+  transform
+>
+  <a class="navbar-brand m-4" routerLink="/images" fade transform>Gallery</a>
   <button
+    fade
+    transform
     class="navbar-toggler"
     type="button"
     data-toggle="collapse"
@@ -9,20 +15,24 @@
     aria-expanded="false"
     aria-label="Toggle navigation"
   >
-    <span class="navbar-toggler-icon"></span>
+    <span class="navbar-toggler-icon" fade transform></span>
   </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
+  <div class="collapse navbar-collapse" id="navbarNav" fade transform>
     <ul class="navbar-nav">
-      <li class="nav-item active">
+      <li class="nav-item active" fade transform>
         <a
           class="nav-link m-4"
+          fade
+          transform
           routerLink="/image-of-day"
           routerLinkActive="active"
           >Image of the day <span class="sr-only">(current)</span></a
         >
       </li>
-      <li class="nav-item">
+      <li class="nav-item" fade transform>
         <a
+          fade
+          transform
           class="nav-link m-4"
           routerLink="/technology"
           routerLinkActive="active"
@@ -30,12 +40,20 @@
         >
       </li>
       <li class="nav-item">
-        <a class="nav-link m-4" routerLink="/mars" routerLinkActive="active"
+        <a
+          class="nav-link m-4"
+          fade
+          routerLink="/mars"
+          routerLinkActive="active"
           >Mars Images</a
         >
       </li>
       <li class="nav-item">
-        <a class="nav-link m-4" routerLink="/epic" routerLinkActive="active"
+        <a
+          class="nav-link m-4"
+          routerLink="/epic"
+          routerLinkActive="active"
+          fade
           >Earth Polychromatic Imaging Camera</a
         >
       </li>
