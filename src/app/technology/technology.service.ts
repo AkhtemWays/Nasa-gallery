@@ -17,9 +17,12 @@ export class TechnologyService {
       map((data) => {
         if (data.results.length <= pagination) {
           this.full = true;
-          return data.results;
+          return data.results.slice(data.result.length - 4, data.length);
         } else {
-          return data.results.slice(0, pagination);
+          return data.results.slice(
+            pagination === 3 ? 0 : pagination,
+            pagination === 3 ? pagination : pagination + 3
+          );
         }
       }),
       catchError((error) => this.errorHandler(error))

@@ -1,4 +1,40 @@
-<div *ngFor="let image of images" align="center">
-  <img src="{{ image }}" alt="" class="mt-3" />
-  <hr />
+<div>
+  <div
+    infiniteScroll
+    [infiniteScrollDistance]="2"
+    [infiniteScrollThrottle]="50"
+    (scrolled)="onScroll()"
+  >
+    <div *ngFor="let image of images" align="center">
+      <img src="{{ image }}" alt="" class="mt-3" />
+      <hr />
+    </div>
+    <div class="row pb-5" *ngIf="!full; else noPostsLeft">
+      <div class="col-md-12 p-5">
+        <ngx-spinner
+          bdOpacity="0.9"
+          bdColor="white"
+          size="default"
+          color="#581f87"
+          type="ball-pulse-sync"
+          [fullScreen]="false"
+        >
+        </ngx-spinner>
+      </div>
+    </div>
+    <ng-template #noPostsLeft>
+      <div class="row pb-5" align="center">
+        <div
+          class="col-md-12 p-5 h3"
+          [ngStyle]="{
+            'background-color': 'black',
+            color: 'white',
+            'font-style': 'oblique'
+          }"
+        >
+          No images left
+        </div>
+      </div>
+    </ng-template>
+  </div>
 </div>

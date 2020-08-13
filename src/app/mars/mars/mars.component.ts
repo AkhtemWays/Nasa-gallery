@@ -1,5 +1,6 @@
 import { MarsService } from './../mars.service';
 import { Component, OnInit } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-mars',
@@ -10,14 +11,29 @@ import { Component, OnInit } from '@angular/core';
 export class MarsComponent implements OnInit {
   data;
   images: string[] = [];
-  constructor(private service: MarsService) {}
+  pagination: number = 4;
+  full: boolean = false;
+  constructor(
+    private service: MarsService,
+    private spinner: NgxSpinnerService
+  ) {}
 
   ngOnInit(): void {
-    this.service.getData().subscribe((data) => {
-      this.data = data;
-      for (let item of this.data.photos.slice(0, 100)) {
+    this.makeCall();
+  }
+  makeCall() {
+    this.service.getData(this.pagination).subscribe((data) => {
+      this.service.full ? (this.full = true) : null;
+      for (let item of data) {
         this.images.push(item.img_src);
       }
+      this.pagination += 4;
     });
+  }
+  onScroll() {
+    this.spinner.show();
+    if (!this.full) {
+      this.makeCall();
+    }
   }
 }

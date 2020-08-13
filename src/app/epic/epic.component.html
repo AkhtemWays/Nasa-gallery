@@ -1,15 +1,51 @@
-<div align="center" *ngFor="let item of data" class="box">
-  <img src="{{ getUrl(item) }}" alt="Something went wrong" />
-  <div align="right" class="p-2 mr-2">
-    <h5>
-      Centroid coordinates (lon: {{ item.centroid_coordinates.lon }}, lat:
-      {{ item.centroid_coordinates.lat }})
-    </h5>
-    <h5>Time: {{ item.date | date: "long" }}</h5>
+<div>
+  <div
+    infiniteScroll
+    [infiniteScrollDistance]="2"
+    [infiniteScrollThrottle]="50"
+    (scrolled)="onScroll()"
+  >
+    <div align="center" *ngFor="let item of data" class="box">
+      <img src="{{ getUrl(item) }}" alt="Something went wrong" />
+      <div align="right" class="p-2 mr-2">
+        <h5>
+          Centroid coordinates (lon: {{ item.centroid_coordinates.lon }}, lat:
+          {{ item.centroid_coordinates.lat }})
+        </h5>
+        <h5>Time: {{ item.date | date: "long" }}</h5>
 
-    <h5>
-      Discovered coordinates (x: {{ item.dscovr_coordinates.x }}, y:
-      {{ item.dscovr_coordinates.y }}, z: {{ item.dscovr_coordinates.z }})
-    </h5>
+        <h5>
+          Discovered coordinates (x: {{ item.dscovr_coordinates.x }}, y:
+          {{ item.dscovr_coordinates.y }}, z: {{ item.dscovr_coordinates.z }})
+        </h5>
+      </div>
+    </div>
+    <div class="row pb-5 m-5" *ngIf="!full; else noPostsLeft">
+      <div class="col-md-12 p-5">
+        <ngx-spinner
+          bdOpacity="0.9"
+          bdColor=""
+          size="default"
+          color="#581f87"
+          type="ball-pulse-sync"
+          [fullScreen]="false"
+        >
+        </ngx-spinner>
+      </div>
+    </div>
+    <ng-template #noPostsLeft>
+      <div class="row pb-5" align="center">
+        <div
+          class="col-md-12 p-5 h3"
+          [ngStyle]="{
+            'background-color': 'black',
+            color: 'white',
+            'font-style': 'oblique'
+          }"
+        >
+          That's all
+        </div>
+      </div>
+    </ng-template>
   </div>
 </div>

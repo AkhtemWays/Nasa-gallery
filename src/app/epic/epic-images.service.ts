@@ -6,10 +6,11 @@ import { Injectable } from '@angular/core';
 export class EpicImagesService {
   simpleData: any;
   cleanedData: IEarthData[] = [];
+  pagination: number = 3;
   constructor(private epicService: EpicService) {}
 
   getImageData() {
-    this.epicService.getData().subscribe((data) => {
+    this.epicService.getData(this.pagination).subscribe((data) => {
       this.simpleData = data;
       for (let item of this.simpleData) {
         const cleanedItem = {
@@ -23,6 +24,7 @@ export class EpicImagesService {
         };
         this.cleanedData.push(cleanedItem);
       }
+      this.pagination += 3;
     });
   }
 }

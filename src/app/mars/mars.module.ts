@@ -3,13 +3,16 @@ import { CommonModule } from '@angular/common';
 
 import { MarsRoutingModule } from './mars-routing.module';
 import { MarsComponent } from './mars/mars.component';
-
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [MarsComponent],
   imports: [
     CommonModule,
-    MarsRoutingModule
-  ]
+    MarsRoutingModule,
+    InfiniteScrollModule,
+    NgxSpinnerModule,
+  ],
 })
-export class MarsModule { }
+export class MarsModule {}
