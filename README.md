@@ -5,7 +5,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Description
 
-This project just uses some of the NASA API's and presents the content in a satisfiable look for an end-user. It contains scroll-down pagination and a few routes used to navigate the navigation bar.
+This project just uses some of the NASA APIs and presents the content in a satisfiable look for an end-user. It contains scroll-down pagination and a few routes used to navigate the navigation bar.
 
 ## Demo
 
