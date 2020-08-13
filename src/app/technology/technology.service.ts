@@ -6,14 +6,22 @@ import { catchError, map } from 'rxjs/operators';
 
 @Injectable()
 export class TechnologyService {
+  full: boolean = false;
   private _url: string =
     'https://api.nasa.gov/techtransfer/patent/?engine&api_key=' +
     environment.apikey;
 
   constructor(private http: HttpClient) {}
-  getData(): Observable<any> {
+  getData(pagination: number): Observable<any> {
     return this.http.get<any>(this._url).pipe(
-      map((data) => data.results),
+      map((data) => {
+        if (data.results.length <= pagination) {
+          this.full = true;
+          return data.results;
+        } else {
+          return data.results.slice(0, pagination);
+        }
+      }),
       catchError((error) => this.errorHandler(error))
     );
   }

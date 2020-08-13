@@ -13,10 +13,6 @@ export class ImageOfDayComponent implements OnInit {
 
   constructor(private service: ImageOfDayHttpService) {}
 
-  getUrl() {
-    return 'url(' + this.cleanedImageObject.url + ')';
-  }
-
   ngOnInit(): void {
     this.service.getData().subscribe((data) => {
       this.imageObject = data;
@@ -29,6 +25,7 @@ export class ImageOfDayComponent implements OnInit {
       };
 
       this.cleanedImageObject = cleanedImage;
+      console.log(this.cleanedImageObject.url);
     });
   }
 }

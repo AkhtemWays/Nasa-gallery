@@ -25,7 +25,6 @@ export class ImagesComponent implements OnInit {
     this.http.getData(this.pagination).subscribe((data) => {
       this.http.full ? (this.full = true) : null;
       this.data = data;
-      console.log(this.data);
       for (let item of this.data) {
         const link = item.links[0].href;
         const description = item.data[0].description;
@@ -51,8 +50,6 @@ export class ImagesComponent implements OnInit {
       setTimeout(() => {
         this.makeCall();
       }, 2000);
-    } else {
-      console.log('no request');
     }
   }
 }

@@ -1,6 +1,7 @@
 import { ITechnology } from './technology.interface';
 import { TechnologyService } from './../technology.service';
 import { Component, OnInit } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-technology',
@@ -10,19 +11,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TechnologyComponent implements OnInit {
   cleanedData: ITechnology[] = [];
-  data;
-  constructor(private service: TechnologyService) {}
+  pagination: number = 3;
+  full: boolean = false;
+  constructor(
+    private service: TechnologyService,
+    private spinner: NgxSpinnerService
+  ) {}
 
   ngOnInit(): void {
-    this.service.getData().subscribe((data) => {
-      this.data = data;
-      for (let item of this.data) {
+    this.makeCall();
+  }
+  onScroll() {
+    this.spinner.show();
+    if (!this.full) {
+      this.makeCall();
+    }
+  }
+  makeCall() {
+    this.service.getData(this.pagination).subscribe((data) => {
+      this.service.full ? (this.full = true) : null;
+      for (let item of data) {
         this.cleanedData.push({
           description: item[3],
           url: item[10],
         });
       }
-      console.log(this.cleanedData);
+      this.pagination += 3;
     });
   }
 }

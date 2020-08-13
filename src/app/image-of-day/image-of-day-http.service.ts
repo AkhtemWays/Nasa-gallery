@@ -11,12 +11,9 @@ export class ImageOfDayHttpService {
   constructor(private http: HttpClient) {}
 
   getData(): Observable<any[]> {
-    return this.http.get<any[]>(this._url).pipe(
-      map((data) => {
-        return data;
-      }),
-      catchError((error) => this.errorHandler(error))
-    );
+    return this.http
+      .get<any[]>(this._url)
+      .pipe(catchError((error) => this.errorHandler(error)));
   }
 
   errorHandler(error: HttpErrorResponse) {

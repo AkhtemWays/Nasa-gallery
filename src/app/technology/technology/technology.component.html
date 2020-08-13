@@ -1,25 +1,61 @@
-<div
-  align="center"
-  [ngStyle]="{
-    'background-color': 'black',
-    'margin-top': '1em'
-  }"
->
+<div>
   <div
-    *ngFor="let item of cleanedData"
-    class="m-4"
-    [ngStyle]="{ border: '1px solid red' }"
+    infiniteScroll
+    [infiniteScrollDistance]="2"
+    [infiniteScrollThrottle]="50"
+    (scrolled)="onScroll()"
   >
-    <img src="{{ item.url }}" alt="Something went wrong" class="mt-5" />
-    <h5
-      class="m-5"
+    <div
+      align="center"
       [ngStyle]="{
-        color: 'white',
-        'font-family': 'cursive',
-        'font-style': 'italic'
+        'background-color': 'black',
+        'margin-top': '1em'
       }"
     >
-      {{ item.description }}
-    </h5>
+      <div
+        *ngFor="let item of cleanedData"
+        class="m-4"
+        [ngStyle]="{ border: '1px solid red' }"
+      >
+        <img src="{{ item.url }}" alt="Something went wrong" class="mt-5" />
+        <h5
+          class="m-5"
+          [ngStyle]="{
+            color: 'white',
+            'font-family': 'cursive',
+            'font-style': 'italic'
+          }"
+        >
+          {{ item.description }}
+        </h5>
+      </div>
+    </div>
+    <div class="row pb-5" *ngIf="!full; else noPostsLeft">
+      <div class="col-md-12 p-5">
+        <ngx-spinner
+          bdOpacity="0.9"
+          bdColor=""
+          size="default"
+          color="#581f87"
+          type="ball-pulse-sync"
+          [fullScreen]="false"
+        >
+        </ngx-spinner>
+      </div>
+    </div>
+    <ng-template #noPostsLeft>
+      <div class="row pb-5" align="center">
+        <div
+          class="col-md-12 p-5 h3"
+          [ngStyle]="{
+            'background-color': 'black',
+            color: 'white',
+            'font-style': 'oblique'
+          }"
+        >
+          No images left
+        </div>
+      </div>
+    </ng-template>
   </div>
 </div>
