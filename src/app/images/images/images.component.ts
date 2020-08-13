@@ -19,9 +19,7 @@ export class ImagesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.spinner.show();
     this.makeCall();
-    this.spinner.hide();
   }
   makeCall() {
     this.http.getData(this.pagination).subscribe((data) => {
@@ -48,10 +46,11 @@ export class ImagesComponent implements OnInit {
     this.pagination += 4;
   }
   onScroll() {
+    this.spinner.show();
     if (!this.full) {
-      this.spinner.show();
-      this.makeCall();
-      this.spinner.hide();
+      setTimeout(() => {
+        this.makeCall();
+      }, 2000);
     } else {
       console.log('no request');
     }
